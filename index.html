@@ -111,6 +111,8 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
+        /* Desktop: 4 produtos por linha */
         @media (min-width: 768px) {
             .grid-produtos {
                 grid-template-columns: repeat(4, 1fr);
@@ -118,6 +120,7 @@
                 padding: 40px 30px;
             }
         }
+
         .produto {
             background: white;
             border-radius: 12px;
@@ -189,15 +192,49 @@
             transform: translateY(-2px);
         }
 
-        /* Botão BEM menor somente no mobile */
-        @media (max-width: 600px) {
+        /* Mobile: botão menor e layout horizontal (imagem esquerda + texto direita) */
+        @media (max-width: 767px) {
+            .grid-produtos {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 15px;
+            }
+            .produto {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                padding: 12px;
+                gap: 12px;
+                border-radius: 12px;
+            }
+            .produto img {
+                width: 110px;
+                height: 110px;
+                object-fit: contain;
+                padding: 8px;
+                margin: 0;
+                flex-shrink: 0;
+            }
+            .info {
+                flex: 1;
+                padding: 0;
+            }
+            .titulo {
+                font-size: 0.95rem;
+                margin: 0 0 4px;
+                min-height: auto;
+            }
+            .preco {
+                font-size: 1.15rem;
+                margin: 4px 0 8px;
+            }
             .btn-adquirir {
-                padding: 8px 16px;      /* BEM menor */
-                font-size: 0.85rem;     /* Fonte bem menor */
-                margin: 8px auto 6px;
-                width: 100%;
-                max-width: 200px;       /* Limite para não ficar gigante */
-                border-radius: 40px;    /* Mais arredondado para ficar fofo no mobile */
+                padding: 8px 16px;
+                font-size: 0.85rem;
+                margin: 0;
+                width: auto;
+                max-width: none;
             }
         }
 
@@ -243,7 +280,7 @@
                 <img src="imagens/shopee-icon.png" alt="Shopee">
                 SHOPEE
             </a>
-            <a href="https://www.mercadolivre.com.br/minha-pagina/resumo?storefront_id=6821b0af47a843718b6492ee971431371445310099#from=editor" target="_blank" class="mercadolivre">
+            <a href="https://www.mercadolivre.com.br/pagina/virtualbrasill" target="_blank" class="mercadolivre">
                 <img src="imagens/mercadolivre-icon.png" alt="Mercado Livre">
                 MERCADO LIVRE
             </a>
