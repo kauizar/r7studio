@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Produtos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f8f8f8;
+            color: #222;
+            line-height: 1.5;
+        }
+        header {
+            background: #0A1F3A;
+            padding: 10px 15px 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+            margin: 5px auto 0;
+            width: 160px;
+            height: auto;
+        }
+        .lojas-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .lojas {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .lojas a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+            min-width: 140px;
+            justify-content: center;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .lojas a.shopee:hover {
+            background: #FF5A00;
+            color: white;
+            border-color: #FF5A00;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 90, 0, 0.5);
+        }
+        .lojas a.mercadolivre:hover {
+            background: #FFE600;
+            color: #000;
+            border-color: #FFE600;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 230, 0, 0.5);
+        }
+        .lojas img {
+            height: 24px;
+            margin-right: 8px;
+        }
+
+        @media (min-width: 601px) {
+            header {
+                padding: 15px 30px 40px;
+            }
+            .logo {
+                position: absolute;
+                top: -28px;
+                left: 30px;
+                margin: 0;
+                width: 220px;
+            }
+            .lojas-title {
+                font-size: 1.9rem;
+                margin: 15px 0 20px;
+            }
+            .lojas {
+                gap: 30px;
+            }
+            .lojas a {
+                min-width: 180px;
+                padding: 14px 30px;
+                font-size: 1.05rem;
+            }
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .grid-produtos {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+                padding: 40px 30px;
+            }
+        }
+        .produto {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        .produto:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .favorito {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .favorito:hover {
+            color: #e74c3c;
+        }
+        .produto img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: #f9f9f9;
+            padding: 15px;
+        }
+        @media (min-width: 768px) {
+            .produto img {
+                height: 280px;
+                padding: 20px;
+            }
+        }
+        .info {
+            padding: 15px;
+        }
+        .titulo {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 8px 0;
+            min-height: 48px;
+        }
+        .preco {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #000;
+            margin: 6px 0;
+        }
+        .btn-adquirir {
+            display: block;
+            margin: 12px auto 8px;
+            padding: 12px 20px;
+            background: #E07A00;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-adquirir:hover {
+            background: #C96B00;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .btn-adquirir {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                margin: 10px auto 6px;
+                width: 100%;
+                max-width: 240px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #222;
+            color: white;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="imagens/anuncios.png" alt="R7 Studio 3D Logo" class="logo">
+
+        <h2 class="lojas-title">CONHEÇA NOSSAS LOJAS</h2>
+
+        <div class="lojas">
+            <a href="https://shopee.com.br/r7ecommerce?categoryId=100636&entryPoint=ShopByPDP&itemId=58203782687" target="_blank" class="shopee">
+                <img src="imagens/shopee-icon.png" alt="Shopee">
+                SHOPEE
+            </a>
+            <a href="https://www.mercadolivre.com.br/minha-pagina/resumo?storefront_id=6821b0af47a843718b6492ee971431371445310099#from=editor" target="_blank" class="mercadolivre">
+                <img src="imagens/mercadolivre-icon.png" alt="Mercado Livre">
+                MERCADO LIVRE
+            </a>
+        </div>
+    </header>
+
+    <div class="grid-produtos">
+
+        <!-- Produto 1 -->
+        <div class="produto">
+            <span class="favorito">♥</span>
+            <img src="imagens/produto1.jpeg" alt="Mickey Mago 20x25cm – Fantasia Clássica Disney">
+            <div class="info">
+                <div class="titulo">Mickey Mago 20x25cm – Fantasia Clássica Disney</div>
+                <div class="preco">R$ 120,00</div>
+                <a href="https://wa.me/5513974276219?text=Olá%2C%20gostaria%20de%20Mickey%20Mago%2020x25cm%20%E2%80%93%20Fantasia%20Cl%C3%A1ssica%20Disney" class="btn-adquirir" target="_blank">
+                    ADQUIRIR PRODUTO
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="produto">
+            <span class="favorito">♥</span>
+            <img src="imagens/produto2.jpeg" alt="Águia Decorativa 10x15 - Escultura 3D">
+            <div class="info">
+                <div class="titulo">Águia Decorativa 10x15 - Escultura 3D</div>
+                <div class="preco">R$ 18,00</div>
+                <a href="https://wa.me/5513974276219?text=Olá%2C%20gostaria%20de%20Águia%20Decorativa%2010x15%20-%20Escultura%203D" class="btn-adquirir" target="_blank">
+                    ADQUIRIR PRODUTO
+                </a>
+            </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="produto">
+            <span class="favorito">♥</span>
+            <img src="imagens/produto3.jpeg" alt="Barril Donkey Kong Clássico 3D 20x20cm">
+            <div class="info">
+                <div class="titulo">Barril Donkey Kong Clássico 3D 20x20cm</div>
+                <div class="preco">R$ 150,00</div>
+                <a href="https://wa.me/5513974276219?text=Olá%2C%20gostaria%20de%20Barril%20Donkey%20Kong%20Cl%C3%A1ssico%203D%2020x20cm" class="btn-adquirir" target="_blank">
+                    ADQUIRIR PRODUTO
+                </a>
+            </div>
+        </div>
+
+        <!-- Adicione mais produtos copiando o bloco acima -->
+
+    </div>
+
+    <footer>
+        © Todos os direitos reservados | Contato: (13) 97427-6219
+    </footer>
+
+</body>
+</html>
