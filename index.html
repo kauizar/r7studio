@@ -126,6 +126,7 @@
             transition: all 0.3s ease;
             text-align: center;
             position: relative;
+            cursor: pointer;
         }
         .produto:hover {
             transform: translateY(-8px);
@@ -138,6 +139,7 @@
             font-size: 1.5rem;
             color: #ccc;
             cursor: pointer;
+            z-index: 2;
         }
         .favorito:hover {
             color: #e74c3c;
@@ -148,12 +150,10 @@
             object-fit: contain;
             background: #f9f9f9;
             padding: 15px;
+            transition: transform 0.3s;
         }
-        @media (min-width: 768px) {
-            .produto img {
-                height: 280px;
-                padding: 20px;
-            }
+        .produto:hover img {
+            transform: scale(1.05);
         }
         .info {
             padding: 15px;
@@ -189,16 +189,39 @@
             transform: translateY(-2px);
         }
 
+        /* Botão BEM menor somente no mobile */
         @media (max-width: 600px) {
             .btn-adquirir {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-                margin: 10px auto 6px;
+                padding: 8px 16px;      /* BEM menor */
+                font-size: 0.85rem;     /* Fonte bem menor */
+                margin: 8px auto 6px;
                 width: 100%;
-                max-width: 240px;
+                max-width: 200px;       /* Limite para não ficar gigante */
+                border-radius: 40px;    /* Mais arredondado para ficar fofo no mobile */
             }
         }
 
+        /* Lightbox para maximizar imagem */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
         footer {
             text-align: center;
             padding: 25px;
@@ -220,7 +243,7 @@
                 <img src="imagens/shopee-icon.png" alt="Shopee">
                 SHOPEE
             </a>
-            <a href="https://www.mercadolivre.com.br/pagina/virtualbrasill" target="_blank" class="mercadolivre">
+            <a href="https://www.mercadolivre.com.br/minha-pagina/resumo?storefront_id=6821b0af47a843718b6492ee971431371445310099#from=editor" target="_blank" class="mercadolivre">
                 <img src="imagens/mercadolivre-icon.png" alt="Mercado Livre">
                 MERCADO LIVRE
             </a>
@@ -230,7 +253,7 @@
     <div class="grid-produtos">
 
         <!-- Produto 1 -->
-        <div class="produto">
+        <div class="produto" onclick="openLightbox('imagens/produto1.jpeg')">
             <span class="favorito">♥</span>
             <img src="imagens/produto1.jpeg" alt="Mickey Mago 20x25cm – Fantasia Clássica Disney">
             <div class="info">
@@ -243,7 +266,7 @@
         </div>
 
         <!-- Produto 2 -->
-        <div class="produto">
+        <div class="produto" onclick="openLightbox('imagens/produto2.jpeg')">
             <span class="favorito">♥</span>
             <img src="imagens/produto2.jpeg" alt="Águia Decorativa 10x15 - Escultura 3D">
             <div class="info">
@@ -256,7 +279,7 @@
         </div>
 
         <!-- Produto 3 -->
-        <div class="produto">
+        <div class="produto" onclick="openLightbox('imagens/produto3.jpeg')">
             <span class="favorito">♥</span>
             <img src="imagens/produto3.jpeg" alt="Barril Donkey Kong Clássico 3D 20x20cm">
             <div class="info">
@@ -268,13 +291,29 @@
             </div>
         </div>
 
-        <!-- Adicione mais produtos copiando o bloco acima -->
+    </div>
 
+    <!-- Lightbox para maximizar imagem -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Imagem ampliada">
     </div>
 
     <footer>
         © Todos os direitos reservados | Contato: (13) 97427-6219
     </footer>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
