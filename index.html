@@ -31,51 +31,9 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
-            margin: 0 0 15px;
+            margin: 10px 0 15px;
             letter-spacing: 1px;
             text-transform: uppercase;
-        }
-        .lojas {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        .lojas a {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            color: #fff;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.3);
-            min-width: 140px;
-            justify-content: center;
-            text-transform: uppercase;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        .lojas a.shopee:hover {
-            background: #FF5A00;
-            color: white;
-            border-color: #FF5A00;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 90, 0, 0.5);
-        }
-        .lojas a.mercadolivre:hover {
-            background: #FFE600;
-            color: #000;
-            border-color: #FFE600;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 230, 0, 0.5);
-        }
-        .lojas img {
-            height: 24px;
-            margin-right: 8px;
         }
 
         @media (min-width: 601px) {
@@ -92,14 +50,6 @@
             .lojas-title {
                 font-size: 1.9rem;
                 margin: 15px 0 20px;
-            }
-            .lojas {
-                gap: 30px;
-            }
-            .lojas a {
-                min-width: 180px;
-                padding: 14px 30px;
-                font-size: 1.05rem;
             }
         }
 
@@ -135,18 +85,7 @@
             transform: translateY(-8px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
-        .favorito {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            color: #ccc;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .favorito:hover {
-            color: #e74c3c;
-        }
+
         .produto img {
             width: 100%;
             height: 220px;
@@ -192,11 +131,11 @@
             transform: translateY(-2px);
         }
 
-        /* Mobile: botão menor e layout horizontal (imagem esquerda + texto direita) */
+        /* Mobile: 1 produto por linha, imagem à esquerda + descrição ao lado */
         @media (max-width: 767px) {
             .grid-produtos {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
                 padding: 15px;
             }
             .produto {
@@ -209,8 +148,8 @@
                 border-radius: 12px;
             }
             .produto img {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
                 object-fit: contain;
                 padding: 8px;
                 margin: 0;
@@ -218,15 +157,14 @@
             }
             .info {
                 flex: 1;
-                padding: 0;
+                padding: 8px 0;
             }
             .titulo {
-                font-size: 0.95rem;
+                font-size: 1rem;
                 margin: 0 0 4px;
-                min-height: auto;
             }
             .preco {
-                font-size: 1.15rem;
+                font-size: 1.2rem;
                 margin: 4px 0 8px;
             }
             .btn-adquirir {
@@ -273,25 +211,13 @@
     <header>
         <img src="imagens/anuncios.png" alt="R7 Studio 3D Logo" class="logo">
 
-        <h2 class="lojas-title">CONHEÇA NOSSAS LOJAS</h2>
-
-        <div class="lojas">
-            <a href="https://shopee.com.br/r7ecommerce?categoryId=100636&entryPoint=ShopByPDP&itemId=58203782687" target="_blank" class="shopee">
-                <img src="imagens/shopee-icon.png" alt="Shopee">
-                SHOPEE
-            </a>
-            <a href="https://www.mercadolivre.com.br/pagina/virtualbrasill" target="_blank" class="mercadolivre">
-                <img src="imagens/mercadolivre-icon.png" alt="Mercado Livre">
-                MERCADO LIVRE
-            </a>
-        </div>
+        <h2 class="lojas-title">MELHORES PRODUTOS</h2>
     </header>
 
     <div class="grid-produtos">
 
         <!-- Produto 1 -->
         <div class="produto" onclick="openLightbox('imagens/produto1.jpeg')">
-            <span class="favorito">♥</span>
             <img src="imagens/produto1.jpeg" alt="Mickey Mago 20x25cm – Fantasia Clássica Disney">
             <div class="info">
                 <div class="titulo">Mickey Mago 20x25cm – Fantasia Clássica Disney</div>
@@ -304,7 +230,6 @@
 
         <!-- Produto 2 -->
         <div class="produto" onclick="openLightbox('imagens/produto2.jpeg')">
-            <span class="favorito">♥</span>
             <img src="imagens/produto2.jpeg" alt="Águia Decorativa 10x15 - Escultura 3D">
             <div class="info">
                 <div class="titulo">Águia Decorativa 10x15 - Escultura 3D</div>
@@ -317,7 +242,6 @@
 
         <!-- Produto 3 -->
         <div class="produto" onclick="openLightbox('imagens/produto3.jpeg')">
-            <span class="favorito">♥</span>
             <img src="imagens/produto3.jpeg" alt="Barril Donkey Kong Clássico 3D 20x20cm">
             <div class="info">
                 <div class="titulo">Barril Donkey Kong Clássico 3D 20x20cm</div>
